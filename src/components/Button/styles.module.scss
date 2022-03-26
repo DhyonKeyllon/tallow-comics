@@ -1,0 +1,21 @@
+.buttonContainer {
+  display: flex;
+
+  button {
+    background-color: var(--blue-10);
+    border: none;
+    text-align: center;
+    display: flex;
+    height: 48px;
+    width: 140px;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-800);
+    transition: 0.2s;
+
+    :hover {
+      color: var(--white-20);
+      background-color: var(--blue-200);
+    }
+  }
+}

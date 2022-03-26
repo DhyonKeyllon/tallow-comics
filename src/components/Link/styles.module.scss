@@ -1,0 +1,14 @@
+div.linkContainer {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+
+  a {
+    color: var(--blue-800);
+
+    &:hover {
+      color: var(--blue-200);
+      transition: 0.3s;
+    }
+  }
+}
