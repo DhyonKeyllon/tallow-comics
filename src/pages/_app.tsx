@@ -9,7 +9,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className={styles.wrapper}>
       <main>
         <LayoutComponent />
-        <Component {...pageProps} />
+        <section className={styles.content}>
+          <Component {...pageProps} />
+        </section>
       </main>
     </div>
   );

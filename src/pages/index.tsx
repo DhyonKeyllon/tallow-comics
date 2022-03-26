@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import { useState } from "react";
 
 import { CardComponent } from "../components/Card";
+import { InputComponent } from "../components/Input";
 import { prismaClient } from "../services/database/prismaClient";
 import styles from "./home.module.scss";
 
@@ -15,14 +16,17 @@ export default function Home({ comics }: ComicProps) {
 
   return (
     <div className={styles.homePageContainer}>
-      {comics.map(comic => (
-        <CardComponent
-          key={comic.id}
-          name={comic.name}
-          description={comic.description ? comic.description : "Sem descrição"}
-          price={Number(comic.price)}
-        />
-      ))}
+      <InputComponent type={'text'}  />
+      <div className={styles.content}>
+        {comics.map(comic => (
+          <CardComponent
+            key={comic.id}
+            name={comic.name}
+            description={comic.description ? comic.description : "Sem descrição"}
+            price={Number(comic.price)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
