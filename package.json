@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start:prisma": "yarn prisma generate",
+    "start:dev": "yarn dev",
+    "start": "yarn concurrently yarn:start:*",
     "dev": "next dev",
     "deploy": "vercel --prod"
   },
@@ -10,6 +13,7 @@
     "@prisma/client": "^3.11.1",
     "@vercel/node": "^1.14.0",
     "axios": "^0.26.1",
+    "concurrently": "^7.0.0",
     "next": "12.1.0",
     "next-auth": "^4.3.1",
     "react": "17.0.2",
