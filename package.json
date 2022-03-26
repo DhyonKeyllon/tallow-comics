@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@prisma/client": "^3.11.1",
