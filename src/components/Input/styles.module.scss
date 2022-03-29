@@ -17,7 +17,7 @@
     height: 48px;
     width: 432px;
     border-radius: 3px;
-    background-color: var(--blue-800);
+    background-color: var(--blue-10);
 
     input {
       border: 0;
@@ -26,17 +26,20 @@
       padding-inline-start: 20px;
       padding-inline-end: 60px;
       background-color: transparent;
+      outline: 0;
 
-      :focus {
-        border: 0;
-
-        ::placeholder {
+      &:hover {
+        &::placeholder {
           color: var(--blue-200);
+          transition: 0.3s;
         }
       }
 
-      ::placeholder {
-        color: var(--blue-800);
+      &:focus {
+        &::placeholder {
+          color: var(--blue-200);
+          transition: 0.3s;
+        }
       }
     }
 

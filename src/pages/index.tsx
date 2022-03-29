@@ -1,7 +1,10 @@
 import { Comic } from "@prisma/client";
+import { format, parseISO } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import cardPicture from "../../public/images/comic--background.webp";
 import { CardComponent } from "../components/Card";
 import { InputComponent } from "../components/Input";
 import { prismaClient } from "../services/database/prismaClient";
@@ -12,18 +15,25 @@ type ComicProps = {
 }
 
 export default function Home({ comics }: ComicProps) {
-  console.log(comics);
+  const [search, setSearch] = useState("");
+  const [filteredComics, setFilteredComics] = useState(comics);
+
+  useEffect(() => {
+    setFilteredComics(comics.filter((comic) => comic.name.toLowerCase().includes(search.toLowerCase())));
+  }, [comics, search]);
 
   return (
     <div className={styles.homePageContainer}>
-      <InputComponent type={'text'}  />
+      <InputComponent type={"text"} onChange={(event) => setSearch(event.target.value)} placeholder={"Pesquisar"} value={search} />
       <div className={styles.content}>
-        {comics.map(comic => (
+        {filteredComics.map(comic => (
           <CardComponent
             key={comic.id}
             name={comic.name}
             description={comic.description ? comic.description : "Sem descrição"}
             price={Number(comic.price)}
+            image={cardPicture}
+            createdAt={comic.createdAt}
           />
         ))}
       </div>
@@ -40,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       name: comic.name,
       description: comic.description,
       price: comic.price.toJSON(),
-      date: comic.createdAt.toISOString(),
+      createdAt: format(parseISO(comic.createdAt.toISOString()), 'd MMM yy', { locale: ptBR }),
     }
   })
 

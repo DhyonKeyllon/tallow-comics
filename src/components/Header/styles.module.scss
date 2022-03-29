@@ -10,12 +10,12 @@ header.headerContainer {
     height: 60px;
 
     label {
+      display: flex;
       margin-right: auto;
       align-self: center;
       text-align: center;
       justify-self: center;
       width: 40px;
-      height: 40px;
 
       div {
         :first-child {

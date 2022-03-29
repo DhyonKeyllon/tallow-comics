@@ -1,7 +1,7 @@
 version: "2.3.3"
 
 services:
-  app:
+  tallowcomics:
     build: .
     command: 'yarn start'
     ports:

@@ -7,12 +7,12 @@ type InputProps = {
   icon?: React.ReactNode,
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export function InputComponent({ label, type, placeholder, icon, ...props }: InputProps) {
+export function InputComponent({ label, type, placeholder, icon, value, onChange, ...props }: InputProps) {
   return (
     <div className={styles.inputContainer}>
       {label && <label>{label}</label>}
       <div>
-        <input type={type} placeholder={placeholder} {...props} />
+        <input value={value} type={type} placeholder={placeholder} onChange={onChange} {...props} />
         {icon && <div>{icon}</div>}
       </div>
     </div>

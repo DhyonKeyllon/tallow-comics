@@ -2,8 +2,8 @@ FROM node:16.14.2
 
 WORKDIR /usr/tallowcomics
 
-COPY package*.json ./
-RUN yarn install
+COPY package.json yarn.lock ./
+RUN yarn
 
 COPY . .
 
