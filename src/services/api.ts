@@ -60,25 +60,6 @@ export async function createComic() {
   return await prismaClient.comic.findMany();
 }
 
-export async function updatePriceComic() {
-  const comics = await prismaClient.comic.findMany();
-
-  const comic = comics[Math.floor(Math.random() * comics.length)];
-
-  if(Number(comic.price) > 20) {
-    const newPrice = Number(comic.price) * 0.9;
-
-    await prismaClient.comic.update({
-      where: {
-        id: comic.id,
-      },
-      data: {
-        price: newPrice,
-      }
-    });
-  }
-}
-
 export async function getComics() {
   return await prismaClient.comic.findMany();
 }
