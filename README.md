@@ -29,7 +29,7 @@ Instale o Docker Desktop no seu computador
     docker pull node:16.14.2
   ```
 
-2. Execute ``` docker-compose up ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
+2. Execute ``` docker-compose up -d ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
   ```sh
-    docker-compose up
+    docker-compose up -d
   ```
