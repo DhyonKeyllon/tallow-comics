@@ -19,23 +19,17 @@ Você pode pesquisar por gibis na loja TallowComic
 
 ### Pré-requisitos
 
-Instale o Docker Descktop no seu computador
-* Docker
-[Docker](https://www.docker.com/)
+Instale o Docker Desktop no seu computador
+* [Docker](https://www.docker.com/)
 
 ### Instalação
 
-1. Execute ``` yarn install ``` para instalar as dependências necessárias.
-  ```sh
-    yarn install
-  ```
-
-2. Execute ``` docker pull node:16.14.2 ``` para instalar a Node Image utilizada no projeto.
+1. Execute ``` docker pull node:16.14.2 ``` para instalar a Node Image utilizada no projeto.
   ```sh
     docker pull node:16.14.2
   ```
 
-3. Execute ``` docker-compose up ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
+2. Execute ``` docker-compose up ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
   ```sh
     docker-compose up
   ```
