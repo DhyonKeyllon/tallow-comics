@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
 
 import styles from "./styles.module.scss";
@@ -14,30 +14,33 @@ type CardProps = {
 
 export function CardComponent({ name, price, description, image, createdAt }: CardProps) {
   const [mouseOver, setMouseOver] = useState(false);
-
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imageArea}>
-        {image ? <Image  src={image} alt="Imagem do gibi" width={168} height={120} /> : <MdOutlinePhotoLibrary />}
+        {image ?
+          <Image  src={image} alt="Imagem do gibi" width={200} height={152} />
+          : <MdOutlinePhotoLibrary />
+        }
       </div>
       <h3>{name}</h3>
       <div className={styles.informationArea}>
         {mouseOver ?
-          <h6
+          <h5
             onMouseOver={event => setMouseOver(true)}
-            onMouseOut={event => setMouseOver(false)}>
+            onMouseOut={event => setMouseOver(false)}
+          >
             {description}
-          </h6>
+          </h5>
           :
-          <p
+          <h5 className={styles.description}
             onMouseOver={event => setMouseOver(true)}
-            onMouseOut={event => setMouseOver(false)}>
+            onMouseOut={event => setMouseOver(false)}
+          >
             {description}
-          </p>
+          </h5>
         }
-
-        <span>{price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
       </div>
+      <span className={styles.price}>{price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
       <h6>{createdAt}</h6>
     </div>
   );

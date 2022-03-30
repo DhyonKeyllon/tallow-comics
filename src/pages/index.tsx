@@ -1,14 +1,13 @@
 import { Comic } from "@prisma/client";
 import { format, parseISO } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+import { ptBR } from "date-fns/locale";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
-import cardPicture from "../../public/images/comic--background.webp";
+import cardPicture from "../../public/images/comic.webp";
 import { CardComponent } from "../components/Card";
 import { InputComponent } from "../components/Input";
-import { createComic } from "../services/api";
-import { prismaClient } from "../services/database/prismaClient";
+import { createComic, getComics } from "../services/api";
 import styles from "./home.module.scss";
 
 type ComicProps = {
@@ -20,12 +19,20 @@ export default function Home({ comics }: ComicProps) {
   const [filteredComics, setFilteredComics] = useState(comics);
 
   useEffect(() => {
-    setFilteredComics(comics.filter((comic) => comic.name.toLowerCase().includes(search.toLowerCase())));
+    setFilteredComics(comics
+      .filter((comic) => comic.description
+      .toLowerCase().includes(search
+        .toLowerCase())));
   }, [comics, search]);
 
   return (
     <div className={styles.homePageContainer}>
-      <InputComponent type={"text"} onChange={(event) => setSearch(event.target.value)} placeholder={"Pesquisar"} value={search} />
+      <InputComponent
+        type={"text"}
+        onChange={(event) => setSearch(event.target.value)}
+        placeholder={"Pesquisar"}
+        value={search}
+      />
       <div className={styles.content}>
         {filteredComics.map(comic => (
           <CardComponent
@@ -43,7 +50,7 @@ export default function Home({ comics }: ComicProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const comics = await prismaClient.comic.findMany();
+  const comics = await getComics();
 
   if(comics.length === 0) {
     const comics = await createComic();

@@ -1,9 +1,15 @@
 header.headerContainer {
-  background-color: var(--gray-20);
-  position: relative;
+  background-color: var(--blue-10);
+  // position: relative;
   padding: 0 32px;
   margin-bottom: 92px;
   box-shadow: 0 0 4px 0 rgba(39, 102, 120, 0.1);
+
+  height: 64px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2020;
 
   nav {
     display: flex;

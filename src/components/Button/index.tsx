@@ -1,17 +1,18 @@
-import { ButtonHTMLAttributes } from "react";
+import Button, { ButtonProps as ButtonUiProps } from "@mui/material/Button";
 
 import styles from "./styles.module.scss";
 
 type ButtonProps = {
-  children?: React.ReactNode,
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  children: React.ReactNode,
+} & ButtonUiProps;
 
-export function ButtonComponent({ children, ...props }: ButtonProps) {
+export function ButtonComponent({ children,...props }: ButtonProps) {
   return (
-    <div className={styles.buttonContainer} >
-      <button {...props}>
-        {children}
-      </button>
-    </div>
+    <Button
+      className={styles.buttonContainer}
+      {...props}
+    >
+      {children}
+    </Button>
   );
 }
