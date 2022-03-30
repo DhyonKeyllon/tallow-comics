@@ -19,9 +19,8 @@ Você pode pesquisar por gibis na loja TallowComic
 
 ### Pré-requisitos
 
-Instale o Docker Descktop no seu computador
-* Docker
-[Docker](https://www.docker.com/)
+Instale o Docker Desktop no seu computador
+* [Docker](https://www.docker.com/)
 
 ### Instalação
 
