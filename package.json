@@ -6,8 +6,7 @@
     "start:prisma": "yarn prisma generate",
     "start:dev": "yarn dev",
     "start": "yarn concurrently yarn:start:*",
-    "dev": "next dev",
-    "deploy": "vercel --prod"
+    "dev": "next dev"
   },
   "dependencies": {
     "@prisma/client": "^3.11.1",
