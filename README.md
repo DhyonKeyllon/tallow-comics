@@ -27,3 +27,4 @@ Instale o Docker Desktop no seu computador
 1. Execute ``` docker-compose up -d ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
   ```sh
     docker-compose up -d
+  ```
