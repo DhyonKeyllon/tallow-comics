@@ -12,7 +12,7 @@ services:
       - .:/usr/tallowcomics
 
   db:
-    container_name: 'database-mysl'
+    container_name: 'database-myqsl'
     image: mysql:5.7.31
     command: --default-authentication-plugin=mysql_native_password --sql_mode=NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER --explicit_defaults_for_timestamp
     restart: always
