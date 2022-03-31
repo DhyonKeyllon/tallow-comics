@@ -24,12 +24,6 @@ Instale o Docker Desktop no seu computador
 
 ### Instalação
 
-1. Execute ``` docker pull node:16.14.2 ``` para instalar a Node Image utilizada no projeto.
-  ```sh
-    docker pull node:16.14.2
-  ```
-
-2. Execute ``` docker-compose up -d ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
+1. Execute ``` docker-compose up -d ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
   ```sh
     docker-compose up -d
-  ```

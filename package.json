@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn && yarn prisma generate && yarn dev",
+    "start": "yarn && yarn prisma migrate dev create-comics && yarn dev",
     "dev": "next dev"
   },
   "dependencies": {
