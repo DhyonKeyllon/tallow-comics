@@ -32,3 +32,6 @@ yarn-error.log*
 
 # editorconfig
 .editorconfig
+
+# ENV
+.env
