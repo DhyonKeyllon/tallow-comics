@@ -28,6 +28,10 @@
       background-color: transparent;
       outline: 0;
 
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
+
       &:hover {
         &::placeholder {
           color: var(--blue-200);

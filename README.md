@@ -19,12 +19,33 @@ Você pode pesquisar por gibis na loja TallowComic
 
 ### Pré-requisitos
 
-Instale o Docker Desktop no seu computador
+Docker Desktop
 * [Docker](https://www.docker.com/)
+
+docker-compose v2 (Vem por padrão com o Docker atualmente)
+* [docker-compose](https://docs.docker.com/compose/cli-command/)
+
+Node.js v16.4.12 ou acima
+* [Node.js](https://nodejs.org/)
 
 ### Instalação
 
-1. Execute ``` docker-compose up -d ``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
+1. Execute ```docker-compose up``` e aguarde a instalação das dependencias com o docker-compose.
+  ```sh
+    docker-compose up
+  ```
+
+2. Após a instalação mate o terminal e execute ```docker-compose up -d``` para a aplicação rodar em segundo plano.
   ```sh
     docker-compose up -d
+  ```
+
+3. Execute ```sudo yarn migrate``` para criar um migrate, com o prisma, no banco de dados.
+  ```sh
+    sudo yarn migrate
+  ```
+
+4. Execute ```yarn dev``` e acesse no seu browser http://localhost:3000 para visualizar a aplicação.
+  ```sh
+    yarn dev
   ```

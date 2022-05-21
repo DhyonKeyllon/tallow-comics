@@ -1,20 +1,132 @@
-.homePageContainer {
+.formContainer {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
 
-  .content {
+.homePageContainer {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    gap: 20px;
+    align-items: center;
     justify-content: center;
-    max-width: 800px;
+    flex-direction: column;
 
-    div {
-      flex: 1 1 1 100px;
+    .searchArea {
+      display: flex;
+      flex-direction: row;
+      height: 48px;
+      justify-content: space-between;
+      gap: 4px;
+
+      .selectContainer {
+        background-color: var(--blue-10);
+        min-width: 116px;
+        transition: 0.3s;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+
+        fieldset {
+          border: 0;
+        }
+      }
+
+      .toggleButtonContainer {
+        background-color: var(--blue-10);
+        transition: 0.3s;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
     }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      gap: 20px;
+      justify-content: center;
+      max-width: 800px;
+
+      @keyframes loadingIcon {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loadingIcon {
+        animation: loading 2s linear infinite;
+
+        & {
+          width: 42px;
+          height: 42px;
+        }
+      }
+
+      @keyframes loading {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .cardContainer {
+        flex: 1 1 1 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        .buttonContainer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--blue-10);
+          &:hover {
+            filter: brightness(0.9);
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-800);
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 0 auto;
+
+  ul {
+    li {
+      button {
+        &:hover {
+          background-color: var(--blue-10);
+        }
+      }
+
+      button.Mui-selected {
+        background-color: var(--blue-10);
+        filter: brightness(0.9);
+      }
+    }
+  }
+}
+
+.stackContainer {
+  nav {
+    margin-top: 0 !important;
   }
 }

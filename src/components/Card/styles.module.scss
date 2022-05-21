@@ -13,20 +13,6 @@
     cursor: default;
   }
 
-  &:hover {
-    animation: zoom both;
-    filter: brightness(0.9);
-
-    @keyframes zoom {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.1);
-      }
-    }
-  }
-
   .imageArea {
     width: 168px;
     height: 120px;
@@ -57,7 +43,6 @@
     height: 100%;
     width: 100%;
 
-
     h5.description {
       text-overflow: ellipsis;
       overflow: hidden;
@@ -66,8 +51,25 @@
   }
 
   span.price {
+    display: flex;
     text-align: center;
+    align-items: center;
     margin-top: auto;
     margin-bottom: 4px;
+    flex-direction: column;
+
+    .buttonContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 20px
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: var(--gray-800);
+        background-color: red;
+      }
+    }
   }
 }

@@ -6,19 +6,21 @@ import styles from "./styles.module.scss";
 
 type CardProps = {
   name: string,
-  price: number,
-  createdAt: Date,
+  formatedPrice: string,
+  year: number,
+  edition: string,
   description?: string,
   image?: StaticImageData,
 };
 
-export function CardComponent({ name, price, description, image, createdAt }: CardProps) {
+export function CardComponent({ name, formatedPrice, description, image, year, edition}: CardProps) {
   const [mouseOver, setMouseOver] = useState(false);
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imageArea}>
-        {image ?
-          <Image  src={image} alt="Imagem do gibi" width={200} height={152} />
+        { image ?
+          <Image src={image} alt="Imagem do gibi" width={200} height={152} />
           : <MdOutlinePhotoLibrary />
         }
       </div>
@@ -26,22 +28,25 @@ export function CardComponent({ name, price, description, image, createdAt }: Ca
       <div className={styles.informationArea}>
         {mouseOver ?
           <h5
-            onMouseOver={event => setMouseOver(true)}
-            onMouseOut={event => setMouseOver(false)}
+            onMouseOver={() => setMouseOver(true)}
+            onMouseOut={() => setMouseOver(false)}
           >
-            {description}
+            { description }
           </h5>
           :
           <h5 className={styles.description}
-            onMouseOver={event => setMouseOver(true)}
-            onMouseOut={event => setMouseOver(false)}
+            onMouseOver={() => setMouseOver(true)}
+            onMouseOut={() => setMouseOver(false)}
           >
-            {description}
+            { description }
           </h5>
         }
       </div>
-      <span className={styles.price}>{price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
-      <h6>{createdAt}</h6>
+      <h6>Edição: Nº {edition}</h6>
+      <h6>Ano: {year}</h6>
+      <span className={styles.price}>
+        {formatedPrice}
+      </span>
     </div>
   );
 }

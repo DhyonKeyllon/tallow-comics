@@ -1,65 +1,95 @@
 import { prismaClient } from "./database/prismaClient";
 
 export async function createComic() {
-  await prismaClient.comic.create({
-    data: {
-      name: "Capitão américa e os Vingadores",
-      description: "CAPITÃO AMÉRICA [ABRIL - 1ª SÉRIE] Nº 056 JAN/1984 - VIDE DETALHES",
-      price: 19.99,
-    }
-  });
+  await prismaClient.category.createMany({
+    data:[
+      {
+        name: "marvel",
+      },
+      {
+        name: "dc",
+      },
+      {
+        name: "mauricio",
+      },
+    ]
+  })
 
-  await prismaClient.comic.create({
-    data: {
-      name: "Capitão américa e os Vingadores",
-      description: "CAPITÃO AMÉRICA & OS VINGADORES SECRETOS Nº 003 SET/2011 - A ERA HEROICA",
-      price: 19.99,
-    }
-  });
-
-  await prismaClient.comic.create({
-    data: {
-      name: "Capitão américa e os Vingadores",
-      description: "CAPITÃO AMÉRICA & OS VINGADORES SECRETOS Nº 002 AGO/2011 - A ERA HEROICA",
-      price: 19.99,
-    }
-  });
-
-  await prismaClient.comic.create({
-    data: {
-      name: "Coleção Homem-Aranha",
-      description: "BIBLIOTECA HISTÓRICA MARVEL HOMEM-ARANHA [PANINI] Nº 001 JUL/2007 - CAPA DURA - LACRADO",
-      price: 499.90,
-    }
-  });
-
-  await prismaClient.comic.create({
-    data: {
-      name: "Wolverine",
-      description: "GRAPHIC MARVEL [ABRIL] Nº 011 FEV/1992 - WOLVERINE: ESCOLHAS MALDITAS",
-      price: 34.90,
-    }
-  });
-
-  await prismaClient.comic.create({
-    data: {
-      name: "Wolverine",
-      description: "WOLVERINE [PANINI - 1ª SÉRIE] Nº 019 JUN/2006",
-      price: 34.90,
-    }
-  });
-
-  await prismaClient.comic.create({
-    data: {
-      name: "Wolverine",
-      description: "WOLVERINE [PANINI - 1ª SÉRIE] Nº 047 OUT/2008",
-      price: 34.90,
-    }
-  });
+  await prismaClient.comic.createMany({
+    data: [
+      {
+        name: "The Flash",
+        description: "The Flash is a super-powered super-hero",
+        edition: "1",
+        year: 2020,
+        price: 100,
+        categoryName: "dc",
+      },
+      {
+        name: "Spider-Man",
+        description: "Nas garras do Homem-Lobo",
+        edition: "006",
+        year: 2018,
+        price: 69.90,
+        categoryName: "marvel",
+      },
+      {
+        name: "Superman",
+        description: "Superman is a super-powered super-hero",
+        edition: "223",
+        year: 2019,
+        price: 200,
+        categoryName: "dc",
+      },
+      {
+        name: "A Turma da Mônica",
+        description: "O Senhor da Guerra",
+        edition: "199",
+        year: 2020,
+        price: 16.90,
+        categoryName: "mauricio",
+      },
+      {
+        name: "Mônica",
+        description: "4ª Série - Panini",
+        edition: "004",
+        year: 2015,
+        price: 8.90,
+        categoryName: "mauricio",
+      }
+    ]
+  })
 
   return await prismaClient.comic.findMany();
 }
 
-export async function getComics() {
-  return await prismaClient.comic.findMany();
+export async function applyDiscount(comicId: string, discount: number) {
+  const comic = await prismaClient.comic.findUnique({
+    where: {
+      id: comicId
+    }
+  });
+
+  if (!comic) {
+    throw new Error("Comic not found");
+  }
+
+  const newPrice = Number(comic.price) - (Number(comic.price) * (discount / 100));
+
+  await prismaClient.comic.update({
+    where: {
+      id: comicId
+    },
+    data: {
+      price: newPrice
+    }
+  }
+  );
+
+  return await prismaClient.comic.findUnique({
+    where: {
+      id: comicId
+    }
+  }
+  );
 }
