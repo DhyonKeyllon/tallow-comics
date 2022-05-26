@@ -10,6 +10,22 @@ datasource db {
 }
 
 model Comic {
+  id           String   @id @default(uuid())
+  name         String   @db.VarChar(255)
+  description  String   @db.VarChar(400)
+  price        Decimal
+  edition      String   @db.VarChar(100)
+  year         Int      @db.Int
+  createdAt    DateTime @default(now())
+  category     Category @relation(fields: [categoryName], references: [name])
+  categoryName String
+
+  @@map("comics")
+  ComicGroup   Collection? @relation(fields: [comicGroupId], references: [id])
+  comicGroupId String?
+}
+
+model Collection {
   id          String   @id @default(uuid())
   name        String   @db.VarChar(255)
   description String   @db.VarChar(400)
@@ -17,16 +33,19 @@ model Comic {
   edition     String   @db.VarChar(100)
   year        Int      @db.Int
   createdAt   DateTime @default(now())
-  category    Category @relation(fields: [categoryName], references:  [name])
+  comics      Comic[]
+
+  category     Category @relation(fields: [categoryName], references: [name])
   categoryName String
 
-  @@map("comics")
+  @@map("collection")
 }
 
 model Category {
   id   String @id @default(uuid())
   name String @db.VarChar(255)
 
+  Comic      Comic[]
+  ComicGroup Collection[]
   @@map("comic_categories")
-  Comic Comic[]
 }
