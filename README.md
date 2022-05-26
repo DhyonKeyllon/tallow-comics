@@ -30,12 +30,12 @@ Node.js v16.4.12 ou acima
 
 ### Instalação
 
-1. Execute ```docker-compose up``` e aguarde a instalação das dependencias com o docker-compose.
+1. Execute ```docker pull mysql:5.7.31``` e aguarde a instalação da Image Container com o docker.
   ```sh
-    docker-compose up
+    docker pull mysql:5.7.31
   ```
 
-2. Após a instalação mate o terminal e execute ```docker-compose up -d``` para a aplicação rodar em segundo plano.
+2. Após a instalação mate o terminal e execute ```docker-compose up -d``` para o banco de dados da aplicação rodar em segundo plano.
   ```sh
     docker-compose up -d
   ```
