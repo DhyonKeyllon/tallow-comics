@@ -1,8 +1,8 @@
-# TallowComic - Teste SM
+# TallowComics - Teste SM
 
 ## Sobre o projeto
 
-Você pode pesquisar por gibis na loja TallowComic
+Você pode pesquisar, aplicar desconto e criar coleçoes de gibis na loja TallowComics
 
 ### Recursos usados
 
